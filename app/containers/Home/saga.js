@@ -17,6 +17,7 @@ import {
  */
 export function* fetchCountryAsync() {
   // Select username from store
+  console.log("saga triggered###")
   yield put(requestCountry());
   const requestURL = 'https://restcountries.eu/rest/v2/all';
 

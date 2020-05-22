@@ -1,6 +1,6 @@
 /**
  *
- * Home
+ * About
  *
  */
 
@@ -14,60 +14,42 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import { makeSelectHome, makeSelectCountries } from './selectors';
+import makeSelectAbout from './selectors';
+import { makeSelectCountries } from '../Home/selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import { fetchCountry } from './actions';
 import TestLayout from '../../components/TestLayout/Loadable';
-import { push } from 'connected-react-router';
 
-export function Home({ onFetchCountry, countries, goToAbout }) {
-  useInjectReducer({ key: 'home', reducer });
-  useInjectSaga({ key: 'home', saga });
+export function About({countries}) {
+  useInjectReducer({ key: 'about', reducer });
+  useInjectSaga({ key: 'about', saga });
 
   return (
     <div>
       <Helmet>
-        <title>Home</title>
-        <meta name="description" content="Description of Home" />
+        <title>About</title>
+        <meta name="description" content="Description of About" />
       </Helmet>
       <FormattedMessage {...messages.header} />
-      <div>
-        Home
-        <button type="button" onClick={onFetchCountry}>
-          Load Countries!
-        </button>
-        {/* {countries && countries.map(item => <span>{item.name}&nbsp;//</span>)} */}
-      </div>
-      <button onClick={goToAbout}>Go to About</button>
       <TestLayout countries={countries} />
     </div>
   );
 }
 
-Home.propTypes = {
+About.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  onFetchCountry: PropTypes.func,
   countries: PropTypes.array,
 };
 
 const mapStateToProps = createStructuredSelector({
-  home: makeSelectHome(),
-  countries: makeSelectCountries(),
+  about: makeSelectAbout(),
+  countries: makeSelectCountries()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    onFetchCountry: evt => {
-      evt.preventDefault();
-      dispatch(fetchCountry());
-    },
-    goToAbout: evt => {
-      evt.preventDefault();
-      dispatch(push('/about'))
-    }
   };
 }
 
@@ -79,4 +61,4 @@ const withConnect = connect(
 export default compose(
   withConnect,
   memo,
-)(Home);
+)(About);

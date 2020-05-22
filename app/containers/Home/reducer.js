@@ -15,6 +15,7 @@ export const initialState = {};
 /* eslint-disable default-case, no-param-reassign */
 const homeReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
+    console.log("reducer triggered###")
     switch (action.type) {
       case REQUEST_COUNTRIES:
         return Object.assign({}, state, {
