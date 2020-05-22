@@ -21,7 +21,7 @@ const makeSelectHome = () =>
     substate => substate,
   );
 
-const makeSelectCountries = () => 
+const makeSelectCountries = () =>
   createSelector(
     selectHomeDomain,
     substate => substate.countries,

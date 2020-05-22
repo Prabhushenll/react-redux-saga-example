@@ -14,13 +14,13 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
+import { push } from 'connected-react-router';
 import { makeSelectHome, makeSelectCountries } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 import { fetchCountry } from './actions';
 import TestLayout from '../../components/TestLayout/Loadable';
-import { push } from 'connected-react-router';
 
 export function Home({ onFetchCountry, countries, goToAbout }) {
   useInjectReducer({ key: 'home', reducer });
@@ -66,8 +66,8 @@ function mapDispatchToProps(dispatch) {
     },
     goToAbout: evt => {
       evt.preventDefault();
-      dispatch(push('/about'))
-    }
+      dispatch(push('/about'));
+    },
   };
 }
 

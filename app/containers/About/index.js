@@ -21,7 +21,7 @@ import saga from './saga';
 import messages from './messages';
 import TestLayout from '../../components/TestLayout/Loadable';
 
-export function About({countries}) {
+export function About({ countries }) {
   useInjectReducer({ key: 'about', reducer });
   useInjectSaga({ key: 'about', saga });
 
@@ -44,7 +44,7 @@ About.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   about: makeSelectAbout(),
-  countries: makeSelectCountries()
+  countries: makeSelectCountries(),
 });
 
 function mapDispatchToProps(dispatch) {

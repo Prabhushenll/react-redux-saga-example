@@ -11,7 +11,7 @@ import React, { memo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function TestLayout({countries}) {
+function TestLayout({ countries }) {
   return (
     <div>
       <FormattedMessage {...messages.header} />

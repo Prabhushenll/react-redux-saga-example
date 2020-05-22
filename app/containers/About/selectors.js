@@ -20,6 +20,6 @@ const makeSelectAbout = () =>
     selectAboutDomain,
     substate => substate,
   );
-  
+
 export default makeSelectAbout;
 export { selectAboutDomain };
